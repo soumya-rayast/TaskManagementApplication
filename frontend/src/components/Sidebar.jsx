@@ -12,6 +12,11 @@ const Sidebar = () => {
             link: '/'
         },
         {
+            title: "Important tasks",
+            icon: <MdLabelImportant />,
+            link: "/importantTasks"
+        },
+        {
             title: "Completed tasks",
             icon: <FaCheckDouble />,
             link: "/completedTasks"
@@ -20,11 +25,6 @@ const Sidebar = () => {
             title: "Incompleted tasks",
             icon: <TbNotebookOff />,
             link: "/incompletedTasks"
-        },
-        {
-            title: "Important tasks",
-            icon: <MdLabelImportant />,
-            link: "/importantTasks"
         }
     ]
     return (

@@ -1,9 +1,10 @@
 import React from 'react'
+import Cards from '../../components/Cards'
 
 const CompletedTasks = () => {
   return (
     <div>
-      completed tasks
+      <Cards home={"false"} /> 
     </div>
   )
 }
