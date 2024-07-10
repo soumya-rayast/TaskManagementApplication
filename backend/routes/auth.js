@@ -2,9 +2,12 @@ const jwt = require("jsonwebtoken");
 const authToken = (req, res, next) => {
     try {
         const authHeader = req.headers['authorization'];
+        if(!authHeader) {
+            return res.status(401).json({message:"Authorization header is required"})
+        }
         const token = authHeader && authHeader.split(" ")[1];
-        if (token == null) {
-            return res.status(401).json({ message: "No Token Provided" });
+        if (!token) {
+            return res.status(401).json({ message: "Authentication is required" });
         }
         jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
             if (err) {

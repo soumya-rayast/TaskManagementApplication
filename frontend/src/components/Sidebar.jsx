@@ -30,13 +30,13 @@ const Sidebar = () => {
     return (
         <>
             <div>
-                <h2 className='text-xl font-semibold'>Soumya Rayast</h2>
-                <h4 className='my-1 text-gray-400'>rayastsoumya@gmail.com</h4>
-                <hr />
+                <h2 className='text-xl font-semibold text-blue-500'>Soumya Rayast</h2>
+                <h4 className='my-1 text-blue-400'>rayastsoumya@gmail.com</h4>
+                <hr/>
             </div>
             <div>
                 {data.map((item, index) => (
-                    <Link to={item.link} key={index} className='my-2 flex items-center hover:bg-gray-500 p-2 rounded transition-all duration-300'>
+                    <Link to={item.link} key={index} className='my-2 bg-blue-500 flex items-center hover:bg-blue-800 p-2 rounded transition-all duration-300'>
                         <div className="mr-2">
                             {item.icon}
                         </div>
@@ -47,7 +47,7 @@ const Sidebar = () => {
                 ))}
             </div>
             <div>
-                <button className='bg-gray-600 w-full p-2 rounded'>
+                <button className='bg-blue-600 w-full p-2 rounded text-xl hover:bg-blue-800'>
                     Log Out
                 </button>
             </div>

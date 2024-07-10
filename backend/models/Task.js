@@ -2,13 +2,12 @@ const mongoose = require("mongoose");
 const TaskSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
+        required: [true,'Title is required'],
         unique: true,
     },
     desc: {
         type: String,
-        required: true,
-        unique: true,
+        required: [true,'Description is required'],
     },
     important: {
         type: Boolean,
@@ -20,4 +19,4 @@ const TaskSchema = new mongoose.Schema({
     },
 
 }, { timestamps: true });
-module.exports = mongoose.model("task", TaskSchema);
+module.exports = mongoose.model("Task", TaskSchema);
