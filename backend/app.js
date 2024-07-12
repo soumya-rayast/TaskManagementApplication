@@ -9,8 +9,8 @@ require("./connect");
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/v1",UserAPI);
-app.use("/api/v2",TaskAPI);
+app.use("/api/v1/users",UserAPI);
+app.use("/api/v2/tasks",TaskAPI);
 
 app.use("/",(req,res)=>{
     res.send("Hello from backend Side");

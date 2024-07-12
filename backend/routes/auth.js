@@ -5,7 +5,7 @@ const authToken = (req, res, next) => {
         if(!authHeader) {
             return res.status(401).json({message:"Authorization header is required"})
         }
-        const token = authHeader && authHeader.split(" ")[1];
+        const token = authHeader.split(" ")[1];
         if (!token) {
             return res.status(401).json({ message: "Authentication is required" });
         }
