@@ -22,7 +22,7 @@ const Login = () => {
                             className='bg-white text-xl font-semibold text-black px-3  py-2 rounded hover:text-blue-600 '>
                             LogIn
                         </button>
-                        <Link  to="/signup" className='text-white hover:text-black '>Not having an account ? <span className='hover:underline'>SignUp here</span></Link>
+                        <Link to="/signup" className='text-white hover:text-black '>Not having an account ? <span className='hover:underline'>SignUp here</span></Link>
                     </div>
                 </div>
             </div>
