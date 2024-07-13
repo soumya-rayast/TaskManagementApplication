@@ -6,13 +6,13 @@ const jwt = require("jsonwebtoken");
 router.post("/sign-in", async (req, res) => {
     try {
         const { username,email ,password } = req.body;
-        if(!username,!password,!email) return res.status(400).json({message:"All fields are required"})
+        if(!username|| !password || !email){ return res.status(400).json({message:"All fields are required"})}
         
-        if (username.length < 5) return res.status(400).json({ message: "username should have at least 5 characters" }); 
+        if (username.length < 5) {return res.status(400).json({ message: "username should have at least 5 characters" }); }
         const existingUser = await user.findOne({ username: username });
         const existingEmail = await user.findOne({ email: email });
-        if (existingUser) return res.status(400).json({ message: "username already exists" });      
-        if (existingEmail) return res.status(400).json({ message: "Email already exists" });           
+        if (existingUser) {return res.status(400).json({ message: "username already exists" }); }     
+        if (existingEmail) {return res.status(400).json({ message: "Email already exists" });}           
         
         const hashPassword =  await bcrypt.hash(req.body.password,10)
         const newUser = new user({
