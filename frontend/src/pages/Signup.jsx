@@ -1,28 +1,34 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, {useState } from 'react'
+import { Link, useNavigate,Navigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 import axios from "axios"
+
 const Signup = () => {
-    const [Data, setData] = useState({ username: "", email: "", password: "" })
-    const history = useNavigate();
-    // const [error, setError] = useState("")
+    const navigate = useNavigate();
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const [Data, setData] = useState({ username: "", email: "", password: "" });
     const change = (e) => {
         const { name, value } = e.target;
         setData({ ...Data, [name]: value })
     }
     const submit = async () => {
         try {
-            if (Data.message === "" || Data.email === "" || Data.password === ""){
+            if (Data.message === "" || Data.email === "" || Data.password === "") {
                 alert("All Fields are required");
-            }else{
-                const response = await axios.post("http://localhost:1000/api/v1/users/sign-in",Data);
-                setData({username :"",email:"",password:""})
+            } else {
+                const response = await axios.post("http://localhost:1000/api/v1/users/sign-in", Data);
+                setData({ username: "", email: "", password: "" })
                 alert(response.data.message)
-                history("/log-in")
+                navigate("/log-in")
+                // window.location.href ="/log-in"
             }
         } catch (error) {
             alert(error.response.data.message)
         }
     }
+    if (isLoggedIn) {
+        return <Navigate to='/'/>
+      }
     return (
         <>
             <div className='h-[98vh] flex justify-center items-center'>
@@ -30,7 +36,7 @@ const Signup = () => {
                     <div className='text-2xl font-semibold'>SignUp</div>
                     {/* {error && <div className='text-red-500'>{error}</div>} */}
                     <input
-                        type="username"
+                        type="text"
                         placeholder='username'
                         name='username'
                         onChange={change}
